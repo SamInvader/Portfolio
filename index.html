@@ -1,77 +1,130 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Coding Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+        }
+        #hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #00C9FF, #92FE9D);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+        .btn {
+            padding: 10px 20px;
+            border-radius: 50px;
+            background: #fff;
+            color: #333;
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            background: #333;
+            color: #fff;
+        }
+        #about, #projects, #contact {
+            padding: 50px 20px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s, transform 1s;
+        }
+        #about.show, #projects.show, #contact.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #282828;
+            color: white;
+        }
+        .email-link {
+            font-size: 1.2em;
+            color: #00C9FF;
+            text-decoration: none;
+            transition: color 0.3s, transform 0.3s;
+        }
+        .email-link:hover {
+            color: #007ACC;
+            transform: scale(1.1);
+        }
+    </style>
 </head>
-
 <body>
-    <!-- Hero Section -->
     <header id="hero">
-        <div class="box"></div>
-        <div class="hero-content">
-            <h1>Hi, I'm Samuel</h1>
-            <p>Welcome to my coding portfolio!</p>
-            <a href="#projects" class="btn">View My Projects</a>
-        </div>
+        <h1>Hi, I'm [Your Name]</h1>
+        <a href="#projects" class="btn">View My Projects</a>
     </header>
 
-    <!-- About Section -->
     <section id="about">
         <h2>About Me</h2>
-        <p>I am a passionate software developer with expertise in web development, mobile app creation and problem-solving. With a focus on creating impactful applications, I aim to deliver optimized solutions for users.</p>
-        <button onclick="showSection('about')">Show/Hide About</button>
+        <p>I am a passionate software developer focused on creating impactful applications.</p>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects">
         <h2>My Projects</h2>
         <div class="project-cards">
-            <a href="(link unavailable)" class="card">
+            <a href="https://your-project1-link.com" class="card">
                 <h3>Project 1</h3>
                 <p>A description of project 1.</p>
             </a>
-            <a href="(link unavailable)" class="card">
+            <a href="https://your-project2-link.com" class="card">
                 <h3>Project 2</h3>
                 <p>A description of project 2.</p>
             </a>
-            <a href="(link unavailable)" class="card">
+            <a href="https://your-project3-link.com" class="card">
                 <h3>Project 3</h3>
                 <p>A description of project 3.</p>
             </a>
-            <a href="(link unavailable)" class="card">
-                <h3>Project 4</h3>
-                <p>A description of project 4.</p>
-            </a>
-            <a href="(link unavailable)" class="card">
-                <h3>Project 5</h3>
-                <p>A description of project 5.</p>
-            </a>
         </div>
-        <button onclick="showSection('projects')">Show/Hide Projects</button>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact">
         <h2>Contact Me</h2>
-        <form onsubmit="handleSubmit(event)">
-            <input type="text" id="name" placeholder="Your Name" required>
-            <input type="email" id="email" placeholder="Your Email" required>
-            <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
-            <button type="submit">Submit</button>
-        </form>
+        <p>
+            Feel free to reach out via email: 
+            <a href="mailto:olawoleolaniran@gmail.com" class="email-link">olawoleolaniran@gmail.com</a>
+        </p>
     </section>
 
-    <!-- Footer -->
     <footer>
-        <p>&copy; 2023 [Your Name]. All rights reserved.</p>
+        <p>&copy; 2024 Your Name</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        const sections = document.querySelectorAll('section');
+        const observerOptions = {
+            threshold: 0.1
+        };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, observerOptions);
+        
+        sections.forEach(section => observer.observe(section));
+    </script>
 </body>
-
 </html>
