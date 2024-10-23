@@ -9,85 +9,86 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(to right, #4e54c8, #8f94fb);
-            color: #333;
-            transition: background-color 0.5s;
-        }
-        h1, h2 {
-            text-align: center;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
             color: #fff;
+            transition: background 0.5s;
+            overflow-x: hidden;
+        }
+        header {
+            text-align: center;
+            padding: 50px;
+            position: relative;
+            z-index: 10;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin: 0;
+            animation: fadeInDown 1s forwards;
+        }
+        h2 {
+            font-size: 1.5em;
+            margin: 20px 0 0;
+            animation: fadeInUp 1s forwards;
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         nav {
-            background-color: rgba(255, 255, 255, 0.9);
-            color: #333;
-            padding: 15px;
-            text-align: center;
-            position: sticky;
+            background-color: rgba(0, 0, 0, 0.7);
+            position: fixed;
             top: 0;
+            width: 100%;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
             z-index: 10;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.5s;
         }
         nav a {
-            color: #333;
-            margin: 0 15px;
+            color: #fff;
+            margin: 0 20px;
             text-decoration: none;
             font-weight: bold;
-            padding: 10px 15px;
-            border-radius: 5px;
-            transition: background 0.3s, color 0.3s;
+            transition: color 0.3s;
         }
         nav a:hover {
-            background-color: #4e54c8;
-            color: #fff;
-        }
-        .floating-header {
-            background: rgba(255, 255, 255, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: float 3s ease-in-out infinite alternate;
-        }
-        @keyframes float {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-10px); }
+            color: #ff4081;
         }
         section {
-            margin: 80px 20px;
+            margin: 100px 20px;
             padding: 20px;
-            background: white;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 8px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.5s ease, transform 0.5s ease;
         }
-        #projects, #blogs {
-            transition: opacity 0.5s, transform 0.5s;
-        }
-        .visible {
+        section.visible {
             opacity: 1;
             transform: translateY(0);
         }
         .project-box, .blog-box {
-            margin: 10px 0;
+            margin: 15px 0;
             text-align: center;
         }
         .project-box a, .blog-box a {
             display: inline-block;
-            background: #4e54c8;
+            background: #ff4081;
             color: #fff;
-            padding: 10px 20px;
+            padding: 15px 25px;
             border-radius: 5px;
             text-decoration: none;
             transition: transform 0.3s, background 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         .project-box a:hover, .blog-box a:hover {
-            background: #8f94fb;
-            transform: translateY(-2px);
+            background: #ff79b0;
+            transform: translateY(-3px);
         }
         .contact {
             text-align: center;
@@ -95,12 +96,12 @@
         }
         .contact a {
             font-weight: bold;
-            color: #4e54c8;
+            color: #ff4081;
             text-decoration: none;
             transition: color 0.3s;
         }
         .contact a:hover {
-            color: #8f94fb;
+            color: #ff79b0;
         }
     </style>
     <script>
@@ -113,11 +114,10 @@
                 threshold: 0.1
             };
 
-            const observer = new IntersectionObserver((entries, observer) => {
+            const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
                     }
                 });
             }, options);
@@ -129,10 +129,6 @@
     </script>
 </head>
 <body>
-    <div class="floating-header">
-        <h2>Hi, I'm Samuel!</h2>
-    </div>
-    
     <nav>
         <a href="#about">About Me</a>
         <a href="#projects">Projects</a>
@@ -140,9 +136,14 @@
         <a href="#contact">Contact Me</a>
     </nav>
 
+    <header>
+        <h1>Welcome to My Portfolio</h1>
+        <h2>Hi, I'm Samuel!</h2>
+    </header>
+
     <section id="about">
-        <h1>About Me</h1>
-        <p>Hello! I'm Samuel, a passionate Python developer with a keen interest in creating innovative applications and solutions. With a solid foundation in coding, I love tackling complex problems and transforming them into user-friendly experiences. My journey in programming has been fueled by curiosity and a desire to continuously learn and improve. When I'm not coding, you can find me exploring new technologies or sharing my insights through my blog. Welcome to my portfolio!</p>
+        <h2>About Me</h2>
+        <p>Hello! I'm Samuel, a passionate Python developer with a keen interest in creating innovative applications and solutions. My journey in programming has been fueled by curiosity and a desire to continuously learn and improve. Welcome to my portfolio!</p>
     </section>
 
     <section id="projects">
