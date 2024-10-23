@@ -21,10 +21,23 @@
             justify-content: center;
             height: 100vh;
             text-align: center;
+            animation: fadeIn 1s ease-in;
         }
         header h1 {
             font-size: 3em;
             margin: 0.5em 0;
+            animation: slideIn 1s forwards;
+            opacity: 0;
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
         .btn {
             padding: 15px 30px;
@@ -34,10 +47,14 @@
             font-weight: bold;
             text-decoration: none;
             transition: all 0.3s;
+            animation: fadeIn 1s ease-in;
+            animation-delay: 0.5s;
+            opacity: 0;
         }
         .btn:hover {
             background: #333;
             color: white;
+            transform: scale(1.05);
         }
         section {
             padding: 60px 20px;
@@ -52,6 +69,18 @@
         section.show {
             opacity: 1;
             transform: translateY(0);
+            animation: bounceIn 0.8s forwards;
+        }
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0);
+            }
+            60% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
         }
         h2 {
             font-size: 2.5em;
@@ -71,12 +100,13 @@
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             text-align: center;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
             text-decoration: none;
             color: inherit;
         }
         .card:hover {
-            transform: scale(1.05);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
         .email-link {
             font-size: 1.2em;
