@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SamInvader's Portfolio</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        h1, h2 {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #00C9FF, #92FE9D);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .hero-content {
+            z-index: 1;
+            animation: fadeIn 3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .box {
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            position: absolute;
+            animation: moveBox 8s infinite ease-in-out;
+            border-radius: 20px;
+        }
+
+        @keyframes moveBox {
+            0% {
+                top: -100px;
+                left: -100px;
+                transform: rotate(0deg);
+            }
+            50% {
+                top: 50%;
+                left: 50%;
+                transform: rotate(180deg);
+            }
+            100% {
+                top: calc(100% - 100px);
+                left: calc(100% - 100px);
+                transform: rotate(360deg);
+            }
+        }
+
+        .btn {
+            background: #fff;
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background: #333;
+            color: #fff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transform: scale(1.1);
+        }
+
+        /* About Section */
+        #about {
+            padding: 50px 20px;
+            background: #fff;
+            text-align: center;
+        }
+
+        #about p {
+            width: 60%;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 1.5;
+        }
+
+        /* Project Section */
+        #projects {
+            padding: 50px 20px;
+            background: #f9f9f9;
+        }
+
+        .project-cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s ease-in-out;
+            width: 300px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: cardLoad 1s ease-out forwards;
+            opacity: 0;
+        }
+
+        .card:nth-child(1) { animation-delay: 0.3s; }
+        .card:nth-child(2) { animation-delay: 0.6s; }
+        .card:nth-child(3) { animation-delay: 0.9s; }
+        .card:nth-child(4) { animation-delay: 1.2s; }
+        .card:nth-child(5) { animation-delay: 1.5s; }
+
+        @keyframes cardLoad {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .card:hover {
+            transform: scale(1.1) rotate(-2deg);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 201, 255, 0.5);
+            z-index: -1;
+            transform: scale(0);
+            transition: all 0.5s ease-in-out;
+            border-radius: 50%;
+        }
+
+        .card:hover::before {
+            transform: scale(3);
+        }
+
+        /* Contact Section */
+        #contact {
+            padding: 50px 20px;
+            background: #fff;
+            text-align: center;
+        }
+
+        #contact form {
+            width: 60%;
+            margin: 0 auto;
+        }
+
+        #contact input, #contact textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        #contact button {
+            background: #00C9FF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #contact button:hover {
+            background: #007ACC;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #282828;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <header id="hero">
+        <div class="box"></div>
+        <div class="hero-content">
+            <h1>Hi, I'm Samuel ALSO KNOWN AS SamInvader</h1>
+            <p>🤗</p>
+            <a href="#projects" class="btn">View My Projects</a>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p>
+            I am a passionate software developer with expertise in web development, mobile app creation, and problem-solving. 
+            With a focus on creating impactful applications, I aim to deliver optimized solutions for users.
+        </p>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>My Projects</h2>
+        <div class="project-cards">
+            <div class="card">
+                <h3>Project 1</h3>
+                <p>A description of project 1.</p>
+            </div>
+            <div class="card">
+                <h3>Project 2</h3>
+                <p>A description of project 2.</p>
+            </div>
+            <div class="card">
+                <h3>Project 3</h3>
+                <p>A description of project 3.</p>
+            </div>
+            <div class="card">
+                <h3>Project 4</h3>
+                <p>A description of project 4.</p>
+            </div>
+            <div class="card">
+                <h3>Project 5</h3>
+                <p>A description of project 5.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <form>
+            <input type="text" placeholder="Name" required>
+            <input type="email" placeholder="Email" required>
+            <textarea rows="5" placeholder="Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 SamInvader. All rights reserved.</p>
+    </footer>
+
+    <script>
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+  </html>
+  
