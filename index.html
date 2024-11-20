@@ -76,6 +76,8 @@
         .project-box, .blog-box {
             margin: 15px 0;
             text-align: center;
+            opacity: 0;
+            animation: floatingBox 1.5s forwards;
         }
         .project-box a, .blog-box a {
             display: inline-block;
@@ -103,6 +105,21 @@
         }
         .contact a:hover {
             color: #ff79b0;
+        }
+        
+        @keyframes floatingBox {
+            0% {
+                opacity: 0;
+                transform: translateY(100vh);
+            }
+            50% {
+                opacity: 0.5;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
     <script>
