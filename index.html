@@ -1,184 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="google-site-verification" content="tNa0AWdQoue5OMUIcNb3LYdRcVmpNRCz-wmko9ulAdE" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SamInvader's Portfolio</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(to right, #6a11cb, #2575fc);
-            color: #fff;
-            transition: background 0.5s;
-            overflow-x: hidden;
-        }
-        header {
-            text-align: center;
-            padding: 50px;
-            position: relative;
-            z-index: 10;
-        }
-        h1 {
-            font-size: 2.5em;
-            margin: 0;
-            animation: fadeInDown 1s forwards;
-        }
-        h2 {
-            font-size: 1.5em;
-            margin: 20px 0 0;
-            animation: fadeInUp 1s forwards;
-        }
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        nav {
-            background-color: rgba(0, 0, 0, 0.7);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 15px 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-            z-index: 10;
-            transition: background-color 0.5s;
-        }
-        nav a {
-            color: #fff;
-            margin: 0 20px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-        nav a:hover {
-            color: #ff4081;
-        }
-        section {
-            margin: 100px 20px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .project-box, .blog-box {
-            margin: 15px 0;
-            text-align: center;
-            opacity: 0;
-            animation: floatingBox 2s ease-out forwards;
-        }
-        .project-box a, .blog-box a {
-            display: inline-block;
-            background: #ff4081;
-            color: #fff;
-            padding: 15px 25px;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: transform 0.3s, background 0.3s;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .project-box a:hover, .blog-box a:hover {
-            background: #ff79b0;
-            transform: translateY(-3px);
-        }
-        .contact {
-            text-align: center;
-            margin: 20px;
-        }
-        .contact a {
-            font-weight: bold;
-            color: #ff4081;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        .contact a:hover {
-            color: #ff79b0;
-        }
-
-        @keyframes floatingBox {
-            0% {
-                opacity: 0;
-                transform: translate(calc(-50vw + 100px), calc(-50vh + 100px));
-            }
-            100% {
-                opacity: 1;
-                transform: translate(0, 0);
-            }
-        }
-    </style>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const sections = document.querySelectorAll('section');
-
-            const options = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, options);
-
-            sections.forEach(section => {
-                observer.observe(section);
-            });
-        });
-    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav>
-        <a href="#about">About Me</a>
-        <a href="#projects">Projects</a>
-        <a href="#blogs">Blogs</a>
-        <a href="#contact">Contact Me</a>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container-fluid">
+            <a href="#" class="navbar-brand">SamInvader</a>
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarContent" type="button" aria-controls="navbarContent" aria-expanded="false" aria-label="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a href="#overview" class="nav-link active" aria-current="page">Overview</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#projects" class="nav-link">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+                <div class="d-flex ms-3 align-items-center">
+                    <div class="form-check form-switch mb-0">
+                        <input type="checkbox" class="form-check-input" id="theme-toggle">
+                        <label for="theme-toggle" class="form-check-label ms-2">Dark Mode</label>
+                    </div>
+                </div>
+            </div>
+        </div>
     </nav>
 
-    <header>
-        <h1>Welcome to My Portfolio</h1>
-        <h2>Hi, I'm Samuel!</h2>
-    </header>
+    <!-- Overview Section -->
+     <section id="overview" class="container mt-5 pt-5">
+        <!-- Go Up Button (only for Overview) -->
+        <a href="#overview" class="btn btn-primary go-up-btn">
+            <i class="bi bi-arrow-up-circle"></i> Top
+        </a>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>Hello! I'm Samuel, a passionate Python developer with a keen interest in creating innovative applications and solutions. My journey in programming has been fueled by curiosity and a desire to continuously learn and improve. Welcome to my portfolio!</p>
-    </section>
-
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="project-box"><a href="project1-link">Project 1</a></div>
-        <div class="project-box"><a href="project2-link">Project 2</a></div>
-        <div class="project-box"><a href="project3-link">Project 3</a></div>
-    </section>
-
-    <section id="blogs">
-        <h2>Blogs</h2>
-        <div class="blog-box"><a href="https://medium.com/@saminvader/ai-model-with-python-642600eab117">AI Model with Python</a></div>
-        <div class="blog-box"><a href="https://medium.com/@saminvader/python-chatbot-tutorial-326b3529ccdf">Python Chatbot Tutorial</a></div>
-        <div class="blog-box"><a href="https://medium.com/@saminvader/creating-apps-for-ai-models-3e33e93d191d">Creating Apps For AI models</a></div>
-    </section>
-
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <div class="contact">
-            <p>Email me at: <a href="mailto:olawoleolaniran@gmail.com">olawoleolaniran@gmail.com</a></p>
+        <div class="text-center mb-5">
+            <h1 class="display-4 fw-bold">👋 Hey I'm SamInvader</h1>
+            <p class="lead">A passionate developer building cool stuff with code and creativity.</p>
         </div>
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <img src="avatar.png" alt="SamInvader Avatar" class="img-fluid rounded-4 shadow-sm">
+            </div>
+            <div class="col-md-6">
+                <h2 class="fw-semibold">🚀 What I Do</h2>
+                <p>I specialize in web development, creating interactive and user-friendly applications. My goal is to make the web a better place through innovative solutions.</p>
+                <ul class="list-unstyled">
+                    <li>💡 Creative problem solver</li>
+                    <li>🛠️ Python, JavaScript, and more</li>
+                    <li>🎨 UI/UX enthusiast</li>
+                    <li>📚 Always learning</li>
+                </ul>
+            </div>
+        </div>
+     </section>
+
+    <!-- About Section -->
+    <section id="about" class="container mt-5">
+        <h1>About Me</h1>
+        <p class="lead">Hi, I'm <strong>SamInvader</strong> - a passionate developer who loves building beautiful and functional projects with code and creativity. Below are some of my favourite creations</p>
+
+        <div class="carousel slide" id="projectCarousel" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active position-relative">
+                    <img src="C://Users/Admin/Desktop/star.png" alt="Project 1" class="d-block w-100 rounded">
+                    <button class="btn btn-primary position-absolute bottom-0 end-0 m-3 download-btn">
+                        <i class="bi bi-download"></i>Download
+                    </button>
+                </div>
+                <div class="carousel-item position-relative">
+                    <img src="C://Users/Admin/Desktop/Floating_logo.png" alt="Project 2" class="d-block w-100 rounded">
+                    <button class="btn btn-success position-absolute bottom-0 end-0 m-3 download-btn">
+                        <i class="bi bi-download"></i>Download
+                    </button>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#projectCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#projectCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
     </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="container mt-5">
+        <h1>Projects</h1>
+        <!-- Projects card will be added later, maybe as carousel -->
+    </section>
+
+    <!-- Contact Section -->
+     <section id="contact" class="container mt-5">
+        <h1>Contact Me</h1>
+        <form action="">
+            <!-- Form fileds here -->
+        </form>
+     </section>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const navLinks = document.querySelectorAll('.nav-link');
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        navLinks.forEach((link) => {
+            link.addEventListener('click', () => {
+                navLinks.forEach((otherLink) => {
+                    otherLink.classList.remove('active');
+                });
+                link.classList.add('active');
+            });
+        });
+
+        function setThemeBasedOnTime(){
+            const currentTime = new Date().getHours();
+            if (currentTime >= 6 && currentTime < 18){
+                body.classList.add('light-mode');
+                themeToggle.checked = false;
+            } else {
+                body.classList.add('dark-mode');
+                themeToggle.checked = true;
+            }
+        }
+
+        setThemeBasedOnTime();
+
+        themeToggle.addEventListener('change', () => {
+            if (themeToggle.checked) {
+                body.classList.add('dark-mode');
+                body.classList.remove('light-mode');
+            } else {
+                body.classList.add('light-mode');
+                body.classList.remove('dark-mode');
+            }
+        });
+
+
+        // Show/hide the go-up button when scrolling
+        const goUpBtn = document.querySelector('.go-up-btn');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 200) {
+                goUpBtn.style.display = 'inline-flex';
+            } else {
+                goUpBtn.style.display = 'none';
+            }
+        });
+
+    </script>
 </body>
 </html>
