@@ -232,13 +232,19 @@
                     j--;
                 }
 
-                if (j === phrases[i].length) isDeleting=true;
-                if (j === 0 && isDeleting){
-                    isDeleting = false;
-                    i = (i + 1) % phrases.length;
-                }
+                if (j === phrases[i].length && !isDeleting) {
+    // Pause before deleting
+    isDeleting = true;
+    setTimeout(loop, 700); // <- stays 1s before deletion
+    return;
+}
+
+if (j === 0 && isDeleting) {
+    isDeleting = false;
+    i = (i + 1) % phrases.length;
+}
             }
-            setTimeout(loop, isDeleting ? 50:100);
+            setTimeout(loop, isDeleting ? 70:100);
         }
         loop();
 
