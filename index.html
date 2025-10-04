@@ -8,6 +8,22 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="shortcut icon" href="avatar.png" type="image/png">
+    <style>
+        /* Blinking cursor at the end */
+        #typewriter {
+            display: inline;
+            border-right: 2px solid #000; /* cursor */
+            padding-right: 2px;
+            white-space: nowrap;
+        }
+        @keyframes blink {
+            0%, 50%, 100% { border-color: #000; }
+            25%, 75% { border-color: transparent; }
+        }
+        #typewriter.blink {
+            animation: blink 1s step-end infinite;
+        }
+    </style>
 </head>
 <body>
 
@@ -45,7 +61,7 @@
 
     <!-- Overview Section -->
      <section id="overview" class="container mt-5 pt-5">
-        <!-- Go Up Button (only for Overview) -->
+        <!-- Go Up Button -->
         <a href="#overview" class="btn btn-primary go-up-btn">
             <i class="bi bi-arrow-up-circle"></i> Top
         </a>
@@ -113,18 +129,16 @@
             <h4>🚀 Fun Facts</h4>
             <ul>
                 <li>I started coding at 10 — haven’t looked back since!</li>
-            <li>I design my own logos and graphics too 💎</li>
-            <li>I enjoy experimenting with automation and desktop tools</li>
-            <li>I’m always up for collaborations and new challenges</li>
+                <li>I design my own logos and graphics too 💎</li>
+                <li>I enjoy experimenting with automation and desktop tools</li>
+                <li>I’m always up for collaborations and new challenges</li>
             </ul>
         </div>
     </section>
 
-
     <!-- Projects Section -->
     <section id="projects" class="container mt-5">
         <h1>Projects</h1>
-        <!-- Projects card will be added later, maybe as carousel -->
          <div class="row mt-4">
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="card h-100 shadow-sm">
@@ -146,7 +160,6 @@
      <section id="contact" class="container mt-5">
         <h1>Contact Me</h1>
         <form action="https://formspree.io/f/mkgzbdpw" method="post">
-            <!-- Form fileds here -->
              <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
                 <input type="text" name="name" id="" class="form-control" required>
@@ -156,15 +169,12 @@
                 <input type="email" name="email" id="" class="form-control" required>
              </div>
              <div class="mb-3">
-                <label for="message" class="form-label">
-                    Message
-                </label>
+                <label for="message" class="form-label">Message</label>
                 <textarea name="message" id="" rows="5" class="form-control" required></textarea>
              </div>
              <button type="submit" class="btn btn-primary">Send</button>
         </form>
      </section>
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
@@ -204,10 +214,8 @@
             }
         });
 
-
         // Show/hide the go-up button when scrolling
         const goUpBtn = document.querySelector('.go-up-btn');
-
         window.addEventListener('scroll', () => {
             if (window.scrollY > 200) {
                 goUpBtn.style.display = 'inline-flex';
@@ -216,39 +224,43 @@
             }
         });
 
+        // Typewriter Animation with blinking cursor at the end
         const phrases = ["Hey I'm SamInvader", "Python Developer", "UI/UX Lover", "Web Builder"];
         let i = 0, j = 0, current = [], isDeleting = false;
+        const typeTarget = document.getElementById('typewriter');
 
-        function loop(){
-            const typeTarget = document.getElementById('typewriter');
+        function loop() {
             if (!typeTarget) return;
+
             typeTarget.textContent = current.join("");
-            if (i < phrases.length){
-                if (!isDeleting && j<= phrases[i].length){
+
+            // Add blinking cursor at the end
+            typeTarget.classList.add('blink');
+
+            if (!isDeleting) {
+                if (j < phrases[i].length) {
                     current.push(phrases[i][j]);
                     j++;
-                } else if (isDeleting && j >= 0){
+                    setTimeout(loop, 100);
+                } else {
+                    // Fully typed, pause before deleting
+                    isDeleting = true;
+                    setTimeout(loop, 1000);
+                }
+            } else {
+                if (j > 0) {
                     current.pop();
                     j--;
+                    setTimeout(loop, 70);
+                } else {
+                    isDeleting = false;
+                    i = (i + 1) % phrases.length;
+                    setTimeout(loop, 500);
                 }
-
-                if (j === phrases[i].length && !isDeleting) {
-    // Pause before deleting
-    isDeleting = true;
-    setTimeout(loop, 700); // <- stays 1s before deletion
-    return;
-}
-
-if (j === 0 && isDeleting) {
-    isDeleting = false;
-    i = (i + 1) % phrases.length;
-}
             }
-            setTimeout(loop, isDeleting ? 70:100);
         }
-        loop();
 
+        loop();
     </script>
 </body>
-
 </html>
