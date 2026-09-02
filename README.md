@@ -8,7 +8,7 @@ This portfolio is a static one-page developer portfolio for Samuel Olawole.
 - `styles.css` — all visual styling and responsive behavior
 - `script.js` — project rendering, theme toggle, and navigation logic
 - `data/projects.js` — project, skill, and focus-area data
-- `avatar.png` — profile image used in the hero section
+- `avatar.jpg` — profile image used in the hero section
 
 ## Adding a project
 

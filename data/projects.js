@@ -11,25 +11,56 @@
   //   caseStudyUrl: "",
   //   featured: false
   // }
+  {
+    title: "NEXUS",
+    description: "A local-first file intelligence system that analyzes, searches, organizes, and manages files while providing storage insights and duplicate detection.",
+    image: "./data/nexus.jpeg",
+    technologies: ["React", "TypeScript", "Python", "Flask", "REST API", "TailwindCSS"],
+    liveUrl: "null",
+    githubUrl: "https://github.com/SamInvader/nexus",
+    caseStudyUrl: "null",
+    featured: true
+  },
+  {
+    title: "Finance Tracker",
+    description: "A personal finance management app for tracking income and expenses, managing budgets and savings goals, and analyzing spending patterns.",
+    image: "./data/ledgerly.png",
+    technologies: ["JavaScript", "HTML", "CSS", "Python", "Flask"],
+    liveUrl: "null",
+    githubUrl: "https://github.com/SamInvader/finance-tracker",
+    caseStudyUrl: "null",
+    featured: true
+  },
+  {
+    title: "Desktop Organizer",
+    description: "A desktop productivity application that automatically organizes files into structured folders based on their types, helping keep cluttered directories clean and manageable.",
+    image: "",
+    technologies: ["Python"],
+    liveUrl: "null",
+    githubUrl: "https://github.com/SamInvader/DesktopOrganizerApp",
+    caseStudyUrl: "null",
+    featured: true
+  }
 ];
 
 window.portfolioSkills = {
   languages: ["Python", "JavaScript", "TypeScript", "C++", "SQL"],
-  development: ["React", "Node.js", "FastAPI", "Flask", "Vite", "Git"],
-  tools: ["GitHub", "SQLite", "REST APIs", "Linux", "Docker", "Figma"]
+  backend: ["Flask", "FastAPI", "REST APIs", "Node.js", "SQLite"],
+  frontend: ["React", "Vite", "HTML", "CSS", "TailwindCSS"],
+  tools: ["Git", "GitHub", "Figma"]
 };
 
 window.portfolioFocusAreas = [
   {
-    title: "Full-stack applications",
-    description: "Building complete products from interface to backend logic, data flow, and deployment decisions."
+    title: "Python backend systems",
+    description: "Building dependable backend services with Python, especially Flask, REST APIs, data flow, and practical application logic."
   },
   {
-    title: "Developer tools",
-    description: "Designing utilities that improve productivity, streamline workflows, and reduce friction in software work."
+    title: "React frontends",
+    description: "Creating clear, responsive interfaces with React, TypeScript, and JavaScript that make software easier to use."
   },
   {
-    title: "Problem-solving systems",
-    description: "Creating practical software that addresses real needs and makes complexity easier to manage."
+    title: "Full-stack problem solving",
+    description: "Connecting thoughtful frontend experiences to backend systems that address real needs and make complexity easier to manage."
   }
 ];

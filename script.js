@@ -3,9 +3,23 @@ const skillGroups = window.portfolioSkills || {};
 const focusAreas = Array.isArray(window.portfolioFocusAreas) ? window.portfolioFocusAreas : [];
 
 const isValidUrl = (value) => {
-  if (!value || typeof value !== 'string') return false;
+  if (typeof value !== 'string') return false;
+
   const trimmed = value.trim();
-  return trimmed.length > 0 && trimmed !== '#';
+  if (!trimmed || /^(null|undefined|none|n\/a|#|your[_ -]?link[_ -]?here)$/i.test(trimmed)) {
+    return false;
+  }
+
+  const isExplicitRelativeUrl = /^(\.\.\/|\.\/|\/)/.test(trimmed);
+  const hasHttpProtocol = /^https?:\/\//i.test(trimmed);
+  if (!isExplicitRelativeUrl && !hasHttpProtocol) return false;
+
+  try {
+    const parsedUrl = new URL(trimmed, document.baseURI);
+    return parsedUrl.protocol === 'http:' || parsedUrl.protocol === 'https:';
+  } catch {
+    return false;
+  }
 };
 
 const projectImageMarkup = (project, variant = 'card') => {
