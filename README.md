@@ -1,33 +1,43 @@
-# 👨‍💻 SamInvader Portfolio
+﻿# Samuel Olawole Portfolio
 
-Welcome to my developer portfolio! This is a responsive and interactive website that showcases who I am, what I do, and some of the cool projects I’ve worked on.
+This portfolio is a static one-page developer portfolio for Samuel Olawole.
 
-## 🌟 Features
+## Project structure
 
-- Responsive layout with **Bootstrap 5**
-- Light/Dark mode toggle with time-based detection
-- Smooth scroll navigation
-- About, Projects, and Contact sections
-- GitHub-linked project cards
-- Contact form powered by **Formspree**
+- `index.html` — page layout and sections
+- `styles.css` — all visual styling and responsive behavior
+- `script.js` — project rendering, theme toggle, and navigation logic
+- `data/projects.js` — project, skill, and focus-area data
+- `avatar.png` — profile image used in the hero section
 
-## 🛠 Tech Stack
+## Adding a project
 
-- HTML5 & CSS3  
-- Bootstrap 5 + Bootstrap Icons  
-- JavaScript  
-- Formspree (for email form submissions)
+Add a new object in `data/projects.js` using the template below:
 
-## 🔗 Live Demo
+```js
+{
+  title: "PROJECT NAME",
+  description: "PROJECT DESCRIPTION",
+  image: "",
+  technologies: ["React", "Python"],
+  liveUrl: "",
+  githubUrl: "",
+  caseStudyUrl: "",
+  featured: false
+}
+```
 
-Coming soon...
+- If `image` is empty, a polished fallback is shown automatically.
+- If `liveUrl` or `githubUrl` is missing, the matching button is hidden.
+- If `featured` is set to `true`, that project becomes the main featured project.
 
-## 📬 Contact
+## Local preview
 
-Got a project or collab idea?  
-Reach out via the contact form or email:  
-📧 olawoleolaniran@gmail.com
+Open `index.html` directly in a browser, or run:
 
----
+```bash
+cd "C:\Users\Admin\Documents\GitHub\Portfolio"
+python -m http.server 8000
+```
 
-> Designed and built with passion, clean code, and a love for problem-solving.
+Then visit http://127.0.0.1:8000
